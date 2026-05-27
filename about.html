@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Reza Jafariteranloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1a1814;--bg2:#211f1b;--bg3:#2a2720;--amber:#EF9F27;--amber-dim:#BA7517;--text:#f0ead8;--text2:#a89f8a;--text3:#6b6357;--border:rgba(239,159,39,0.12);--border2:rgba(239,159,39,0.25);--green:#1D9E75;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(26,24,20,0.88);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+  .nav-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.08em;color:var(--amber);text-decoration:none;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--amber);}
+  .nav-links a.active{border-bottom:1px solid var(--amber);padding-bottom:1px;}
+  .page-header{padding:9rem 3rem 3rem;border-bottom:0.5px solid var(--border);background:var(--bg2);}
+  .page-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;margin-bottom:0.75rem;}
+  .page-tag::before{content:'// ';color:var(--text3);}
+  h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1;}
+  main{padding:4rem 3rem;max-width:960px;}
+  .asec{margin-bottom:4rem;}
+  .slabel{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:0.5px solid var(--border);}
+  .slabel::before{content:'// ';color:var(--text3);}
+  p{color:var(--text2);line-height:1.85;font-size:0.96rem;margin-bottom:1rem;}
+  p:last-child{margin-bottom:0;}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem;}
+  .sg-title{font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:0.85rem;text-transform:uppercase;letter-spacing:0.1em;}
+  .bar-list{display:flex;flex-direction:column;gap:0.7rem;}
+  .bl{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3);margin-bottom:0.3rem;display:flex;justify-content:space-between;}
+  .bt{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+  .bf{height:100%;background:var(--amber-dim);border-radius:2px;}
+  .bf.s{background:var(--amber);}
+  .timeline{display:flex;flex-direction:column;}
+  .ti{display:flex;gap:2rem;padding:1.5rem 0;border-bottom:0.5px solid var(--border);}
+  .ti:last-child{border-bottom:none;}
+  .td{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--amber-dim);white-space:nowrap;padding-top:0.15rem;min-width:90px;}
+  .tt{font-size:0.93rem;font-weight:700;color:var(--text);margin-bottom:0.25rem;}
+  .ts{font-size:0.78rem;color:var(--text3);margin-bottom:0.5rem;font-family:'DM Mono',monospace;}
+  .tx{font-size:0.82rem;color:var(--text2);line-height:1.65;}
+  .lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;}
+  .lc{background:var(--bg2);border:0.5px solid var(--border);border-radius:3px;padding:1.25rem;transition:border-color 0.2s;}
+  .lc:hover{border-color:var(--border2);}
+  .lf{font-size:1.4rem;margin-bottom:0.6rem;}
+  .ln{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.25rem;}
+  .ll{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3);}
+  .ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;}
+  .ic{background:var(--bg2);border:0.5px solid var(--border);border-radius:3px;padding:1.25rem;text-align:center;transition:border-color 0.2s;}
+  .ic:hover{border-color:var(--border2);}
+  .ie{font-size:1.4rem;margin-bottom:0.6rem;}
+  .il{font-size:0.8rem;color:var(--text2);font-weight:600;}
+  @media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{gap:1rem;}.page-header,main{padding-left:1.5rem;padding-right:1.5rem;}.page-header{padding-top:8rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">REZA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certifications.html">Certs</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">about me</div>
+  <h1>3+ years of IT.<br>Now going deeper.</h1>
+</div>
+
+<main>
+  <div class="asec">
+    <div class="slabel">background</div>
+    <p>I started in architecture — learning to think in systems, work under constraints, and turn complexity into clear plans. Those skills transferred directly into IT support, where I spent 3+ years resolving hardware, software, and network issues in professional environments.</p>
+    <p>Now at Haaga-Helia UAS, I'm majoring in Cloud Services & Infrastructure. My goal is a role in a fast-moving technical team where I can keep growing — every day a different challenge, every problem documented and solved properly.</p>
+  </div>
+
+  <div class="asec">
+    <div class="slabel">skills & tools</div>
+    <div class="skills-grid">
+      <div>
+        <div class="sg-title">Operating Systems</div>
+        <div class="bar-list">
+          <div><div class="bl"><span>Linux CLI</span><span>Power user</span></div><div class="bt"><div class="bf s" style="width:82%"></div></div></div>
+          <div><div class="bl"><span>Windows</span><span>Proficient</span></div><div class="bt"><div class="bf s" style="width:75%"></div></div></div>
+          <div><div class="bl"><span>macOS</span><span>Familiar</span></div><div class="bt"><div class="bf" style="width:45%"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sg-title">Networking</div>
+        <div class="bar-list">
+          <div><div class="bl"><span>TCP/IP & subnetting</span><span>Solid</span></div><div class="bt"><div class="bf s" style="width:78%"></div></div></div>
+          <div><div class="bl"><span>DHCP / DNS</span><span>Solid</span></div><div class="bt"><div class="bf s" style="width:75%"></div></div></div>
+          <div><div class="bl"><span>VLANs / switching</span><span>Working knowledge</span></div><div class="bt"><div class="bf" style="width:58%"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sg-title">Dev Tools</div>
+        <div class="bar-list">
+          <div><div class="bl"><span>Git / GitHub</span><span>Intermediate</span></div><div class="bt"><div class="bf s" style="width:65%"></div></div></div>
+          <div><div class="bl"><span>Python</span><span>Basics</span></div><div class="bt"><div class="bf" style="width:38%"></div></div></div>
+          <div><div class="bl"><span>JavaScript</span><span>Basics</span></div><div class="bt"><div class="bf" style="width:38%"></div></div></div>
+          <div><div class="bl"><span>HTML / CSS</span><span>Working knowledge</span></div><div class="bt"><div class="bf" style="width:55%"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sg-title">IT Support</div>
+        <div class="bar-list">
+          <div><div class="bl"><span>Helpdesk operations</span><span>3+ yrs</span></div><div class="bt"><div class="bf s" style="width:85%"></div></div></div>
+          <div><div class="bl"><span>Hardware deployment</span><span>3+ yrs</span></div><div class="bt"><div class="bf s" style="width:80%"></div></div></div>
+          <div><div class="bl"><span>IT asset management</span><span>Solid</span></div><div class="bt"><div class="bf s" style="width:72%"></div></div></div>
+          <div><div class="bl"><span>Ticketing systems</span><span>Solid</span></div><div class="bt"><div class="bf s" style="width:75%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="asec">
+    <div class="slabel">education & timeline</div>
+    <div class="timeline">
+      <div class="ti">
+        <div class="td">2025 – 2027</div>
+        <div>
+          <div class="tt">Bachelor of Business IT — Cloud Services & Infrastructure</div>
+          <div class="ts">Haaga-Helia University of Applied Sciences · Helsinki, Finland</div>
+          <div class="tx">Focus: Linux Systems, Network Administration, Cloud Platforms, Virtualization.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="td">2020 – 2023</div>
+        <div>
+          <div class="tt">IT Support Technician</div>
+          <div class="ts">Mashhad System — Mashhad Tech Center · Iran</div>
+          <div class="tx">First-line IT support, 15-unit workstation deployment, LAN infrastructure build, user management, documentation.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="td">2018 – 2020</div>
+        <div>
+          <div class="tt">IT Technician Assistant</div>
+          <div class="ts">Hami Sazeh · Iran</div>
+          <div class="tx">Multi-site technical support, stakeholder communication, infrastructure task coordination.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="td">2011 – 2016</div>
+        <div>
+          <div class="tt">Bachelor of Architecture</div>
+          <div class="ts">IAUM · Iran</div>
+          <div class="tx">Systematic thinking, blueprint analysis, and human-centric design — skills that transfer directly to infrastructure work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="asec">
+    <div class="slabel">languages</div>
+    <div class="lang-grid">
+      <div class="lc"><div class="lf">🇬🇧</div><div class="ln">English</div><div class="ll">Fluent</div></div>
+      <div class="lc"><div class="lf">🇮🇷</div><div class="ln">Farsi</div><div class="ll">Native</div></div>
+      <div class="lc"><div class="lf">🇫🇮</div><div class="ln">Finnish</div><div class="ll">Basic — actively learning</div></div>
+    </div>
+  </div>
+
+  <div class="asec">
+    <div class="slabel">interests</div>
+    <div class="ig">
+      <div class="ic"><div class="ie">☁</div><div class="il">Cloud Computing</div></div>
+      <div class="ic"><div class="ie">🐧</div><div class="il">Linux</div></div>
+      <div class="ic"><div class="ie">🌐</div><div class="il">Networking</div></div>
+      <div class="ic"><div class="ie">🐍</div><div class="il">Python & Scripting</div></div>
+      <div class="ic"><div class="ie">🔐</div><div class="il">IT Security</div></div>
+      <div class="ic"><div class="ie">🇫🇮</div><div class="il">Life in Finland</div></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

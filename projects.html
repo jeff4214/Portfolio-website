@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Reza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1a1814; --bg2: #211f1b; --bg3: #2a2720;
+    --amber: #EF9F27; --amber-light: #FAC775; --amber-dim: #BA7517;
+    --text: #f0ead8; --text2: #a89f8a; --text3: #6b6357;
+    --border: rgba(239,159,39,0.12); --border2: rgba(239,159,39,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; min-height: 100vh; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem; background: rgba(26,24,20,0.85); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; color: var(--amber); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--amber); }
+  .nav-links a.active { border-bottom: 1px solid var(--amber); padding-bottom: 1px; }
+
+  .page-header {
+    padding: 9rem 3rem 3rem; border-bottom: 0.5px solid var(--border); background: var(--bg2);
+  }
+  .page-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .page-tag::before { content: '// '; color: var(--text3); }
+  h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 1rem; }
+  .page-intro { font-size: 0.95rem; color: var(--text2); max-width: 560px; line-height: 1.7; }
+
+  main { padding: 3rem; }
+
+  /* Filter */
+  .filter-bar { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2px; border: 0.5px solid var(--border); background: transparent;
+    color: var(--text3); cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--border2); color: var(--text2); }
+  .filter-btn.active { border-color: var(--amber-dim); color: var(--amber); background: rgba(239,159,39,0.07); }
+
+  /* Grid */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+  .project-card {
+    background: var(--bg2); border: 0.5px solid var(--border); border-radius: 4px;
+    display: flex; flex-direction: column; transition: border-color 0.25s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .project-card-top { padding: 1.75rem 1.75rem 0; flex: 1; }
+  .project-card-bottom { padding: 1.25rem 1.75rem 1.75rem; border-top: 0.5px solid var(--border); margin-top: 1.5rem; }
+
+  .project-status {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 0.62rem; padding: 0.2rem 0.6rem; border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 0.1em; font-family: 'DM Mono', monospace;
+  }
+  .status-live { background: rgba(29,158,117,0.12); color: #1D9E75; border: 0.5px solid rgba(29,158,117,0.3); }
+  .status-progress { background: rgba(239,159,39,0.1); color: var(--amber-dim); border: 0.5px solid var(--border2); }
+  .status-planned { background: var(--bg3); color: var(--text3); border: 0.5px solid var(--border); }
+
+  .project-lang {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .project-lang::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: inline-block; }
+  .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+  .project-desc { font-size: 0.82rem; color: var(--text3); line-height: 1.7; margin-bottom: 1.25rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-tag { font-size: 0.68rem; padding: 0.22rem 0.6rem; background: var(--bg3); border: 0.5px solid var(--border); color: var(--text3); border-radius: 2px; font-family: 'DM Mono', monospace; }
+
+  .project-links { display: flex; gap: 0.75rem; }
+  .project-link {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 0.9rem; border-radius: 2px; text-decoration: none;
+    border: 0.5px solid var(--border2); color: var(--amber);
+    transition: background 0.2s;
+  }
+  .project-link:hover { background: rgba(239,159,39,0.07); }
+  .project-link.disabled { opacity: 0.35; pointer-events: none; border-color: var(--border); color: var(--text3); }
+
+  /* Empty / placeholder card */
+  .add-card {
+    background: transparent; border: 0.5px dashed var(--border2); border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2.5rem; text-align: center; min-height: 200px;
+    color: var(--text3);
+  }
+  .add-card-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.4; }
+  .add-card-text { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { gap: 1rem; }
+    .page-header, main { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .page-header { padding-top: 8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">REZA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="certifications.html">Certs</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">what i'm building</div>
+  <h1>Projects</h1>
+  <p class="page-intro">
+    Practical work is how I learn. Everything here is built, documented, and pushed to GitHub. Projects will grow as my skills do.
+  </p>
+</div>
+
+<main>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+    <button class="filter-btn" onclick="filterProjects('python', this)">Python</button>
+    <button class="filter-btn" onclick="filterProjects('infrastructure', this)">Infrastructure</button>
+    <button class="filter-btn" onclick="filterProjects('web', this)">Web</button>
+  </div>
+
+  <div class="projects-grid" id="projects-grid">
+
+    <!-- PROJECT 1 — Coming soon -->
+    <div class="project-card" data-category="python">
+      <span class="project-status status-progress">In Progress</span>
+      <div class="project-card-top">
+        <div class="project-lang">Python</div>
+        <div class="project-title">To-Do App</div>
+        <div class="project-desc">
+           A To-Do App with CLI interface, built in Python. Will include features like adding, listing, and deleting tasks, with data stored in a local file.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Beginner</span>
+        </div>
+      </div>
+      <div class="project-card-bottom">
+        <div class="project-links">
+          <a href="https://github.com/jeff4214/Python-Projects/tree/main/To-do%20App" class="project-link" target="_blank">GitHub →</a>
+          <a href="#" class="project-link disabled">Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 — Placeholder -->
+    <div class="project-card" data-category="python">
+      <span class="project-status status-planned">Planned</span>
+      <div class="project-card-top">
+        <div class="project-lang">Python</div>
+        <div class="project-title">Project 02</div>
+        <div class="project-desc">
+          Next Python project. Will be added with a README, screenshots, and notes about what I learned while building it.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+        </div>
+      </div>
+      <div class="project-card-bottom">
+        <div class="project-links">
+          <a href="#" class="project-link disabled">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- THIS SITE -->
+    <div class="project-card" data-category="web">
+      <span class="project-status status-live">Live</span>
+      <div class="project-card-top">
+        <div class="project-lang">HTML / CSS / JS</div>
+        <div class="project-title">This Portfolio Site</div>
+        <div class="project-desc">
+          Personal portfolio website built with plain HTML, CSS, and JavaScript. Hosted on zone.fi. Warm dark theme with amber accents.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">zone.fi</span>
+        </div>
+      </div>
+      <div class="project-card-bottom">
+        <div class="project-links">
+          <a href="https://github.com/yourusername" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infrastructure placeholder -->
+    <div class="project-card" data-category="infrastructure">
+      <span class="project-status status-planned">Planned</span>
+      <div class="project-card-top">
+        <div class="project-lang">Infrastructure</div>
+        <div class="project-title">Home Lab / Cloud Setup</div>
+        <div class="project-desc">
+          Documentation of a home lab or cloud environment setup — showing practical skills in Linux, networking, or cloud configuration.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">Cloud</span>
+          <span class="project-tag">Networking</span>
+        </div>
+      </div>
+      <div class="project-card-bottom">
+        <div class="project-links">
+          <a href="#" class="project-link disabled">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more card -->
+    <div class="add-card">
+      <div class="add-card-icon">+</div>
+      <div class="add-card-text">More projects coming</div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  function filterProjects(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('#projects-grid .project-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

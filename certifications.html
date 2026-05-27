@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifications — Reza Jafariteranloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1a1814;--bg2:#211f1b;--bg3:#2a2720;--amber:#EF9F27;--amber-dim:#BA7517;--text:#f0ead8;--text2:#a89f8a;--text3:#6b6357;--border:rgba(239,159,39,0.12);--border2:rgba(239,159,39,0.25);--green:#1D9E75;--gbg:rgba(29,158,117,0.1);--gborder:rgba(29,158,117,0.3);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(26,24,20,0.88);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+  .nav-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.08em;color:var(--amber);text-decoration:none;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--amber);}
+  .nav-links a.active{border-bottom:1px solid var(--amber);padding-bottom:1px;}
+  .page-header{padding:9rem 3rem 3rem;border-bottom:0.5px solid var(--border);background:var(--bg2);}
+  .page-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;margin-bottom:0.75rem;}
+  .page-tag::before{content:'// ';color:var(--text3);}
+  h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:1rem;}
+  .page-intro{font-size:0.95rem;color:var(--text2);max-width:560px;line-height:1.7;}
+  main{padding:3rem;}
+  .legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+  .li{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3);}
+  .ld{width:8px;height:8px;border-radius:50%;}
+  .ld.earn{background:var(--green);}
+  .ld.prog{background:var(--amber-dim);}
+  .ld.plan{background:var(--text3);}
+  .cc{margin-bottom:3rem;}
+  .cat-title{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--border);}
+  .cat-title::before{content:'// ';color:var(--text3);}
+  .cl{display:flex;flex-direction:column;gap:0.75rem;}
+  .ccard{display:flex;align-items:center;gap:1.25rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;transition:border-color 0.2s,background 0.2s;}
+  .ccard:hover{border-color:var(--border2);}
+  .ccard.inprog{border-left:2px solid var(--amber-dim);}
+  .ccard.earned{border-left:2px solid var(--green);}
+  .cicon{width:44px;height:44px;border-radius:4px;flex-shrink:0;background:var(--bg3);border:0.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .cinfo{flex:1;}
+  .cname{font-size:0.92rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
+  .cmeta{display:flex;gap:1rem;flex-wrap:wrap;}
+  .cissuer{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--text3);}
+  .cright{display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;}
+  .cbadge{font-size:0.62rem;padding:0.22rem 0.7rem;border-radius:2px;text-transform:uppercase;letter-spacing:0.1em;font-family:'DM Mono',monospace;white-space:nowrap;}
+  .cb-earn{background:var(--gbg);color:var(--green);border:0.5px solid var(--gborder);}
+  .cb-prog{background:rgba(239,159,39,0.1);color:var(--amber-dim);border:0.5px solid var(--border2);}
+  .cb-plan{background:var(--bg3);color:var(--text3);border:0.5px solid var(--border);}
+  /* Progress bar for Google cert */
+  .progress-bar-wrap{margin-top:1rem;padding:1rem 1.5rem;background:var(--bg3);border-radius:3px;border:0.5px solid var(--border);}
+  .pb-label{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text3);margin-bottom:0.5rem;}
+  .pb-track{height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+  .pb-fill{height:100%;background:var(--amber-dim);border-radius:2px;width:80%;}
+  .pb-modules{display:flex;flex-direction:column;gap:0.35rem;margin-top:0.85rem;}
+  .pbm{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--text2);}
+  .pbm.done{color:var(--green);}
+  .pbm.active{color:var(--amber-dim);}
+  .pbm-icon{font-size:0.75rem;width:14px;text-align:center;}
+  /* Roadmap */
+  .roadmap{margin-top:4rem;}
+  .rm-title{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;}
+  .rm-sub{font-size:0.85rem;color:var(--text3);margin-bottom:2rem;}
+  .rm-track{display:flex;align-items:center;flex-wrap:wrap;gap:0;}
+  .rm-step{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.5rem;}
+  .rm-circle{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;border:1.5px solid var(--border2);background:var(--bg2);}
+  .rm-circle.current{border-color:var(--amber);background:rgba(239,159,39,0.08);}
+  .rm-circle.next{border-color:var(--amber-dim);background:rgba(239,159,39,0.04);}
+  .rm-label{font-family:'DM Mono',monospace;font-size:0.63rem;color:var(--text3);max-width:80px;line-height:1.4;}
+  .rm-connector{flex:1;height:1.5px;background:var(--border);min-width:20px;max-width:60px;}
+  @media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{gap:1rem;}.page-header,main{padding-left:1.5rem;padding-right:1.5rem;}.page-header{padding-top:8rem;}.ccard{flex-wrap:wrap;}.rm-connector{min-width:12px;max-width:30px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">REZA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certifications.html" class="active">Certs</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-tag">credentials</div>
+  <h1>Certifications</h1>
+  <p class="page-intro">My certification roadmap — tracking what's completed, in progress, and planned as I build towards cloud and IT infrastructure roles.</p>
+</div>
+
+<main>
+  <div class="legend">
+    <div class="li"><div class="ld earn"></div>Earned</div>
+    <div class="li"><div class="ld prog"></div>In Progress</div>
+    <div class="li"><div class="ld plan"></div>Planned</div>
+  </div>
+
+  <!-- Google IT Support -->
+  <div class="cc">
+    <div class="cat-title">IT Support & Systems</div>
+    <div class="cl">
+      <div class="ccard inprog">
+        <div class="cicon">🎓</div>
+        <div class="cinfo">
+          <div class="cname">Google IT Support Certificate</div>
+          <div class="cmeta"><span class="cissuer">Coursera · NY State Dept of Labor</span></div>
+        </div>
+        <div class="cright">
+          <span class="cbadge cb-prog">In Progress</span>
+        </div>
+      </div>
+      <!-- Detailed progress -->
+      <div class="progress-bar-wrap">
+        <div class="pb-label"><span>Progress</span><span>5 of 6 complete</span></div>
+        <div class="pb-track"><div class="pb-fill"></div></div>
+        <div class="pb-modules">
+          <div class="pbm done"><span class="pbm-icon">✓</span>Technical Support Fundamentals</div>
+          <div class="pbm done"><span class="pbm-icon">✓</span>The Bits and Bytes of Computer Networking</div>
+          <div class="pbm done"><span class="pbm-icon">✓</span>Operating Systems and You: Becoming a Power User</div>
+          <div class="pbm done"><span class="pbm-icon">✓</span>System Administration and IT Infrastructure Services</div>
+          <div class="pbm done"><span class="pbm-icon">✓</span>IT Security: Defense Against the Digital Dark Arts</div>
+          <div class="pbm active"><span class="pbm-icon">○</span>Advanced Support Practicum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cloud -->
+  <div class="cc">
+    <div class="cat-title">Cloud Platforms</div>
+    <div class="cl">
+      <div class="ccard">
+        <div class="cicon">🔷</div>
+        <div class="cinfo">
+          <div class="cname">AZ-900: Microsoft Azure Fundamentals</div>
+          <div class="cmeta"><span class="cissuer">Microsoft</span></div>
+        </div>
+        <div class="cright"><span class="cbadge cb-plan">Next Target</span></div>
+      </div>
+      <div class="ccard">
+        <div class="cicon">☁</div>
+        <div class="cinfo">
+          <div class="cname">AWS Certified Cloud Practitioner (CLF-C02)</div>
+          <div class="cmeta"><span class="cissuer">Amazon Web Services</span></div>
+        </div>
+        <div class="cright"><span class="cbadge cb-plan">Planned</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Networking -->
+  <div class="cc">
+    <div class="cat-title">Networking & Infrastructure</div>
+    <div class="cl">
+      <div class="ccard">
+        <div class="cicon">🌐</div>
+        <div class="cinfo">
+          <div class="cname">CompTIA Network+</div>
+          <div class="cmeta"><span class="cissuer">CompTIA</span></div>
+        </div>
+        <div class="cright"><span class="cbadge cb-plan">Planned</span></div>
+      </div>
+      <div class="ccard">
+        <div class="cicon">🔐</div>
+        <div class="cinfo">
+          <div class="cname">CompTIA Security+</div>
+          <div class="cmeta"><span class="cissuer">CompTIA</span></div>
+        </div>
+        <div class="cright"><span class="cbadge cb-plan">Planned</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="roadmap">
+    <div class="rm-title">Learning Roadmap</div>
+    <div class="rm-sub">Where I am and where I'm heading</div>
+    <div class="rm-track">
+      <div class="rm-step">
+        <div class="rm-circle current">🎓</div>
+        <div class="rm-label">Google IT Support</div>
+      </div>
+      <div class="rm-connector"></div>
+      <div class="rm-step">
+        <div class="rm-circle next">🌐</div>
+        <div class="rm-label">Network+</div>
+      </div>
+      <div class="rm-connector"></div>
+      <div class="rm-step">
+        <div class="rm-circle">☁</div>
+        <div class="rm-label">AWS Practitioner</div>
+      </div>
+      <div class="rm-connector"></div>
+      <div class="rm-step">
+        <div class="rm-circle">🔷</div>
+        <div class="rm-label">Azure Fundamentals</div>
+      </div>
+      <div class="rm-connector"></div>
+      <div class="rm-step">
+        <div class="rm-circle">🔐</div>
+        <div class="rm-label">Security+</div>
+      </div>
+      <div class="rm-connector"></div>
+      <div class="rm-step">
+        <div class="rm-circle">🎯</div>
+        <div class="rm-label">Graduate & Work</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

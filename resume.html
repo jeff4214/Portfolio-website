@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Reza Jafariteranloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1a1814;--bg2:#211f1b;--bg3:#2a2720;--amber:#EF9F27;--amber-light:#FAC775;--amber-dim:#BA7517;--text:#f0ead8;--text2:#a89f8a;--text3:#6b6357;--border:rgba(239,159,39,0.12);--border2:rgba(239,159,39,0.25);--green:#1D9E75;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(26,24,20,0.88);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+  .nav-logo{font-size:1.1rem;font-weight:700;letter-spacing:0.08em;color:var(--amber);text-decoration:none;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--amber);}
+  .nav-links a.active{border-bottom:1px solid var(--amber);padding-bottom:1px;}
+  .page-header{padding:9rem 3rem 3rem;border-bottom:0.5px solid var(--border);background:var(--bg2);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;}
+  .page-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;margin-bottom:0.75rem;}
+  .page-tag::before{content:'// ';color:var(--text3);}
+  h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;line-height:1;}
+  .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.75rem;border-radius:3px;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;border:1px solid var(--amber);}
+  .btn-outline{background:transparent;color:var(--amber);}
+  .btn-outline:hover{background:rgba(239,159,39,0.06);}
+  .resume-layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 200px);}
+  .sidebar{background:var(--bg2);border-right:0.5px solid var(--border);padding:2.5rem 1.75rem;}
+  .main-col{padding:2.5rem 3rem;}
+  .resume-name{font-size:1.25rem;font-weight:800;letter-spacing:-0.01em;margin-bottom:0.2rem;}
+  .resume-title{font-family:'DM Mono',monospace;font-size:0.67rem;color:var(--amber-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.1rem;line-height:1.5;}
+  .resume-loc{font-family:'DM Mono',monospace;font-size:0.67rem;color:var(--text3);margin-bottom:2rem;}
+  .sb-section{margin-bottom:1.75rem;}
+  .sb-label{font-family:'DM Mono',monospace;font-size:0.63rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;border-bottom:0.5px solid var(--border);padding-bottom:0.45rem;}
+  .ci{display:flex;align-items:flex-start;gap:0.55rem;font-size:0.78rem;color:var(--text2);margin-bottom:0.45rem;word-break:break-all;line-height:1.4;}
+  .cicon{color:var(--amber-dim);font-style:normal;flex-shrink:0;}
+  .st-list{display:flex;flex-direction:column;gap:0.4rem;}
+  .st{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text2);background:var(--bg3);border:0.5px solid var(--border);padding:0.3rem 0.7rem;border-radius:2px;}
+  .st.hl{color:var(--amber);border-color:var(--border2);background:rgba(239,159,39,0.05);}
+  .li{display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:0.45rem;}
+  .ln{color:var(--text2);}
+  .ll{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text3);}
+  .sh{font-size:0.68rem;font-family:'DM Mono',monospace;color:var(--amber);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+  .sh::before{content:'// ';color:var(--text3);}
+  .rs{margin-bottom:2.5rem;}
+  .entry{margin-bottom:1.5rem;}
+  .entry:last-child{margin-bottom:0;}
+  .eh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.2rem;flex-wrap:wrap;gap:0.25rem;}
+  .et{font-size:0.92rem;font-weight:700;color:var(--text);}
+  .ed{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--amber-dim);white-space:nowrap;}
+  .eo{font-size:0.77rem;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:0.5rem;}
+  .eb{list-style:none;}
+  .eb li{font-size:0.81rem;color:var(--text2);line-height:1.7;padding-left:1rem;position:relative;margin-bottom:0.2rem;}
+  .eb li::before{content:'→';position:absolute;left:0;color:var(--amber-dim);font-size:0.68rem;top:0.18rem;}
+  .check{color:var(--green);font-size:0.75rem;margin-right:0.3rem;}
+  .inprog{color:var(--amber-dim);font-size:0.75rem;margin-right:0.3rem;}
+  .profile-p{color:var(--text2);line-height:1.8;font-size:0.9rem;}
+  @media(max-width:900px){.resume-layout{grid-template-columns:1fr;}.sidebar{border-right:none;border-bottom:0.5px solid var(--border);}.main-col{padding:2rem 1.5rem;}}
+  @media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{gap:1rem;}.page-header{padding:8rem 1.5rem 2rem;}.sidebar{padding:2rem 1.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">REZA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certifications.html">Certs</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div>
+    <div class="page-tag">curriculum vitae</div>
+    <h1>Resume</h1>
+  </div>
+  <a href="#" class="btn btn-outline">Download PDF ↓</a>
+</div>
+
+<div class="resume-layout">
+  <aside class="sidebar">
+    <div class="resume-name">Reza Jafariteranloo</div>
+    <div class="resume-title">IT Infrastructure Student</div>
+    <div class="resume-title">IT Support & Systems Specialist</div>
+    <div class="resume-loc">📍 Helsinki, Finland</div>
+
+    <div class="sb-section">
+      <div class="sb-label">Contact</div>
+      <div class="ci"><span class="cicon">✉</span>Jafari.reza70@gmail.com</div>
+      <div class="ci"><span class="cicon">📞</span>+358 414 840 667</div>
+      <div class="ci"><span class="cicon">in</span>https://www.linkedin.com/in/reza-jafariteranloo-a52235216</div>
+      <div class="ci"><span class="cicon">⌥</span>https://www.github.com/jeff4214</div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Technical Skills</div>
+      <div class="st-list">
+        <span class="st hl">Linux (power user)</span>
+        <span class="st hl">Networking / TCP-IP</span>
+        <span class="st hl">Git (intermediate)</span>
+        <span class="st hl">Python (intermediate)</span>
+        <span class="st hl">JavaScript (basics)</span>
+        <span class="st hl">HTML / CSS</span>
+        <span class="st hl">DHCP / DNS / VLANs</span>
+        <span class="st hl">Hardware deployment</span>
+        <span class="st hl">Windows (proficient)</span>
+        <span class="st">Helpdesk & ticketing</span>
+        <span class="st">IT asset management</span>
+        <span class="st">macOS (familiar)</span>
+        <span class="st">AI productivity tools</span>
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Soft Skills</div>
+      <div class="st-list">
+        <span class="st">Service-minded</span>
+        <span class="st">Systematic troubleshooting</span>
+        <span class="st">Clear communication</span>
+        <span class="st">Team collaboration</span>
+        <span class="st">Works well under pressure</span>
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Languages</div>
+      <div class="li"><span class="ln">English</span><span class="ll">Fluent</span></div>
+      <div class="li"><span class="ln">Farsi</span><span class="ll">Native</span></div>
+      <div class="li"><span class="ln">Finnish</span><span class="ll">Basic — learning</span></div>
+    </div>
+  </aside>
+
+  <main class="main-col">
+
+    <div class="rs">
+      <div class="sh">Profile</div>
+      <p class="profile-p">IT student at Haaga-Helia UAS majoring in Cloud Services & Infrastructure, with 3+ years of hands-on IT support experience covering helpdesk, hardware deployment, and network setup. Known for a service-minded attitude, systematic troubleshooting, and clear documentation. Comfortable working across Mac, Windows, and Linux environments. Looking for a role where I can support a fast-moving technical team and grow within a cutting-edge organisation.</p>
+    </div>
+
+    <div class="rs">
+      <div class="sh">Key Achievements</div>
+      <div class="entry">
+        <div class="et" style="margin-bottom:0.35rem">Hardware deployment at scale</div>
+        <div style="font-size:0.81rem;color:var(--text2);line-height:1.7;">Selected, assembled, and deployed 15 workstations end-to-end in a professional environment — on time and without service interruptions.</div>
+      </div>
+      <div class="entry">
+        <div class="et" style="margin-bottom:0.35rem">LAN infrastructure from scratch</div>
+        <div style="font-size:0.81rem;color:var(--text2);line-height:1.7;">Designed and implemented a 15-PC network with full IPv4 configuration (DHCP, DNS, subnetting) achieving stable long-term uptime.</div>
+      </div>
+      <div class="entry">
+        <div class="et" style="margin-bottom:0.35rem">Reliable under pressure</div>
+        <div style="font-size:0.81rem;color:var(--text2);line-height:1.7;">Consistently resolved technical and logistical challenges within tight deadlines in high-pressure site environments across 3+ years of professional IT roles.</div>
+      </div>
+    </div>
+
+    <div class="rs">
+      <div class="sh">Technical Experience</div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">IT Support Technician</span>
+          <span class="ed">2020 – 2023</span>
+        </div>
+        <div class="eo">Mashhad System — Mashhad Tech Center · Mashhad, Iran</div>
+        <ul class="eb">
+          <li>Provided first-line IT support: resolved hardware, software, and network issues for end users.</li>
+          <li>Managed end-to-end workstation deployment for 15 units — selection, assembly, configuration, and handover.</li>
+          <li>Designed and implemented LAN environments; handled user permissions and ongoing system administration.</li>
+          <li>Documented support actions and maintained hardware inventory records.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">IT Technician Assistant</span>
+          <span class="ed">2018 – 2020</span>
+        </div>
+        <div class="eo">Hami Sazeh · Iran</div>
+        <ul class="eb">
+          <li>Assisted with technical troubleshooting and infrastructure tasks in a fast-paced site environment.</li>
+          <li>Coordinated with diverse teams and stakeholders, translating technical needs into clear action plans.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rs">
+      <div class="sh">Education</div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">Bachelor of Business IT — Cloud Services & Infrastructure</span>
+          <span class="ed">2025 – 2027</span>
+        </div>
+        <div class="eo">Haaga-Helia University of Applied Sciences · Helsinki, Finland</div>
+        <ul class="eb">
+          <li>Focus: Linux Systems, Network Administration, Cloud Platforms, Virtualization</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">Bachelor of Architecture</span>
+          <span class="ed">2011 – 2016</span>
+        </div>
+        <div class="eo">IAUM · Iran</div>
+        <ul class="eb">
+          <li>Systematic thinking, blueprint analysis, and human-centric design perspective</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rs">
+      <div class="sh">Certifications & Courses</div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">Google IT Support Certificate — 4/6 complete</span>
+          <span class="ed">In Progress</span>
+        </div>
+        <div class="eo">Coursera · NY State Dept of Labor</div>
+        <ul class="eb">
+          <li><span class="check">✓</span>Technical Support Fundamentals</li>
+          <li><span class="check">✓</span>The Bits and Bytes of Computer Networking</li>
+          <li><span class="check">✓</span>Operating Systems and You: Becoming a Power User</li>
+          <li><span class="check">✓</span>System Administration and IT Infrastructure Services</li>
+          <li><span class="inprog">→</span>IT Security: Defense Against the Digital Dark Arts — est. completion May 2026</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="eh">
+          <span class="et">AZ-900: Microsoft Azure Fundamentals</span>
+          <span class="ed">Next Target</span>
+        </div>
+        <div class="eo">Microsoft</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
